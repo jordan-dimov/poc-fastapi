@@ -14,12 +14,16 @@ httptools==0.1.1
     # via uvicorn
 mangum==0.10.0
     # via -r requirements/requirements.in
+psycopg2==2.8.6
+    # via -r requirements/requirements.in
 pydantic==1.8
     # via fastapi
 python-dotenv==0.15.0
     # via uvicorn
 pyyaml==5.4.1
     # via uvicorn
+sqlalchemy==1.3.23
+    # via -r requirements/requirements.in
 starlette==0.13.6
     # via fastapi
 typing-extensions==3.7.4.3
