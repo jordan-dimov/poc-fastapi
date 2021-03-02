@@ -2,10 +2,13 @@
     "requestContext": {
         "http": {
             "sourceIp": "127.0.0.1",
-            "path": "/",
+            "path": "/item/12",
             "method": "GET"
         }
     },
     "pathParameters": {
+    },
+    "queryStringParameters": {
+        "msg": "Sample message"
     }
 }

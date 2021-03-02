@@ -63,7 +63,9 @@ functions:
     handler: app.asgi.handler
     events:
       - httpApi:
-          path: '*'
+          path: /{proxy+}
+          method: ANY
+
 #          path: /users/create
 #          method: get
 #      - websocket: $connect
