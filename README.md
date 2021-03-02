@@ -21,3 +21,8 @@ then use `sls` to invoke the lambda locally like this:
 
     sls invoke local --function fastapp --path sample_invocations/list_items.json
 
+Alternatively, you can simply start serverless in offline mode and access it via a browser:
+
+    sls offline
+
+then visit `http://localhost:3000/dev/docs/`
