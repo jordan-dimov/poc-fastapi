@@ -20,14 +20,17 @@ service: poc
 # Check out our docs for more details
 frameworkVersion: '2'
 
+variablesResolutionMode: 20210219
+useDotenv: true
+
 provider:
   name: aws
   runtime: python3.8
+  logs:
+      httpApi: true
   lambdaHashingVersion: 20201221
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  stage: ${env:STAGE}
+  region: ${env:REGION}
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -49,23 +52,18 @@ provider:
 #  environment:
 #    variable1: value1
 
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.py
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+    - .direnv/**  
 
 functions:
-  hello:
-    handler: handler.hello
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
-#    events:
-#      - httpApi:
+  fastapp:
+    handler: app.asgi.handler
+    events:
+      - httpApi:
+          path: '*'
 #          path: /users/create
 #          method: get
 #      - websocket: $connect
@@ -112,3 +110,11 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+custom:
+  pythonRequirements:
+      dockerizePip: non-linux
+
+plugins:
+  - serverless-python-requirements
+  - serverless-dotenv-plugin

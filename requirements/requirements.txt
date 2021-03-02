@@ -12,6 +12,8 @@ h11==0.12.0
     # via uvicorn
 httptools==0.1.1
     # via uvicorn
+mangum==0.10.0
+    # via -r requirements/requirements.in
 pydantic==1.8
     # via fastapi
 python-dotenv==0.15.0
@@ -21,7 +23,9 @@ pyyaml==5.4.1
 starlette==0.13.6
     # via fastapi
 typing-extensions==3.7.4.3
-    # via pydantic
+    # via
+    #   mangum
+    #   pydantic
 uvicorn[standard]==0.13.4
     # via -r requirements/requirements.in
 uvloop==0.15.2
