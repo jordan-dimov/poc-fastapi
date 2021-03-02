@@ -118,3 +118,4 @@ custom:
 plugins:
   - serverless-python-requirements
   - serverless-dotenv-plugin
+  - serverless-offline

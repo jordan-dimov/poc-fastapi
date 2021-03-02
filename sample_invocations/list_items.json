@@ -1,0 +1,11 @@
+{
+    "pathParameters": {
+    },
+    "requestContext": {
+        "http": {
+            "sourceIp": "127.0.0.1",
+            "path": "/",
+            "method": "GET"
+        }
+    }
+}

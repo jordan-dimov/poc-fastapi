@@ -17,16 +17,6 @@ def get_item(item_id: int, msg: str = None):
 
 def handler(event, context):
 
-    # NOTE: Setting requestContext explicitly here to please Mangum
-    # when invoking lambda locally
-    event["requestContext"] = {
-        "http": {
-            "sourceIp": "127.0.0.1",
-            "path": "/",
-            "method": "GET",
-        }
-    }
-
     asgi_handler = Mangum(app)
     response = asgi_handler(event, context)
 
