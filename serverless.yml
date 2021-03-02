@@ -64,7 +64,7 @@ functions:
     events:
       - httpApi:
           path: /{proxy+}
-          method: ANY
+          method: '*'
 
 #          path: /users/create
 #          method: get
