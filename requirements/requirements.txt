@@ -4,6 +4,14 @@
 #
 #    pip-compile requirements/requirements.in
 #
+aurora-data-api==0.2.7
+    # via sqlalchemy-aurora-data-api
+boto3==1.17.19
+    # via aurora-data-api
+botocore==1.20.19
+    # via
+    #   boto3
+    #   s3transfer
 click==7.1.2
     # via uvicorn
 fastapi==0.63.0
@@ -12,24 +20,40 @@ h11==0.12.0
     # via uvicorn
 httptools==0.1.1
     # via uvicorn
+jmespath==0.10.0
+    # via
+    #   boto3
+    #   botocore
 mangum==0.10.0
     # via -r requirements/requirements.in
 psycopg2==2.8.6
     # via -r requirements/requirements.in
 pydantic==1.8
     # via fastapi
+python-dateutil==2.8.1
+    # via botocore
 python-dotenv==0.15.0
     # via uvicorn
 pyyaml==5.4.1
     # via uvicorn
-sqlalchemy==1.3.23
+s3transfer==0.3.4
+    # via boto3
+six==1.15.0
+    # via python-dateutil
+sqlalchemy-aurora-data-api==0.2.7
     # via -r requirements/requirements.in
+sqlalchemy==1.3.23
+    # via
+    #   -r requirements/requirements.in
+    #   sqlalchemy-aurora-data-api
 starlette==0.13.6
     # via fastapi
 typing-extensions==3.7.4.3
     # via
     #   mangum
     #   pydantic
+urllib3==1.26.3
+    # via botocore
 uvicorn[standard]==0.13.4
     # via -r requirements/requirements.in
 uvloop==0.15.2

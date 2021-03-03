@@ -21,6 +21,7 @@ service: poc
 frameworkVersion: '2'
 
 variablesResolutionMode: 20210219
+unresolvedVariablesNotificationMode: "error"
 useDotenv: true
 
 provider:
@@ -31,6 +32,20 @@ provider:
   lambdaHashingVersion: 20201221
   stage: ${env:STAGE}
   region: ${env:REGION}
+  environment:
+      DB_URI: ${env:DB_URI}
+      DB_CLUSTER_ARN: ${env:DB_CLUSTER_ARN}
+      DB_SECRET_ARN: ${env:DB_SECRET_ARN}
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "rds-data:ExecuteStatement"
+            - "rds-data:BeginTransaction"
+            - "rds-data:RollbackTransaction"
+            - "secretsmanager:GetSecretValue"
+          Resource: '*'
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -65,13 +80,13 @@ functions:
       - httpApi:
           path: /{proxy+}
           method: '*'
-          cors: true
 #    Define function environment variables here
 #    environment:
 #      variable2: value2
 
 custom:
   pythonRequirements:
+      fileName: requirements/requirements.txt
       dockerizePip: non-linux
 
 plugins:
