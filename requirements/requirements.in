@@ -4,3 +4,4 @@ mangum
 psycopg2
 sqlalchemy
 sqlalchemy-aurora-data-api
+requests
