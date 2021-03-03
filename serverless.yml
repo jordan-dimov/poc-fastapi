@@ -44,6 +44,7 @@ provider:
             - "rds-data:ExecuteStatement"
             - "rds-data:BeginTransaction"
             - "rds-data:RollbackTransaction"
+            - "rds-data:CommitTransaction"
             - "secretsmanager:GetSecretValue"
           Resource: '*'
 
