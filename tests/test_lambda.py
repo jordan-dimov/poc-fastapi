@@ -1,7 +1,8 @@
 from fastapi.testclient import TestClient
 
 from app import models
-from app.asgi import app, get_db
+from app.asgi import app
+from app.database import get_db
 
 client = TestClient(app)
 
@@ -57,7 +58,6 @@ def test_list_users():
     _reset_db()
 
     response = _create_test_user()
-    resp_user = response.json()
 
     response = client.get("/users")
     resp_list_users = response.json()

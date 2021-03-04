@@ -6,7 +6,7 @@ from mangum import Mangum
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
-from app.database import SessionLocal, engine
+from app.database import engine, get_db
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -19,14 +19,6 @@ app = FastAPI(
     version="0.0.1a",
     root_path=root_prefix,
 )
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @app.post("/users", response_model=schemas.User)
